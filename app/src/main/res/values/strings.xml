@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Inpost Interview</string>
+    <string name="main_screen_title">Main Screen</string>
+    <string name="counter_value">Counter: %d</string>
+    <string name="increment_counter">Increment counter</string>
+    <string name="menu">Menu</string>
+</resources>

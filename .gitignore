@@ -1,0 +1,54 @@
+# Ignore OS files
+
+# Windows
+Thumbs.db
+
+# Linux
+.directory
+*~
+
+# MacOS
+.DS_Store
+
+# Crashlytics
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
+crashlytics.properties
+
+# Gradle support
+.gradle
+build
+
+# Android Studio/IntelliJ support
+/local.properties
+/buildSrc/local.properties
+*.iml
+.idea/appInsightsSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/.name
+.idea/androidTestResultsUserPreferences.xml
+.idea/assetWizardSettings.xml
+.idea/compiler.xml
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/deploymentTargetDropDown.xml
+.idea/deploymentTargetSelector.xml
+.idea/deviceManager.xml
+.idea/dynamic.xml
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/kotlinc.xml
+.idea/migrations.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/navEditor.xml
+.idea/other.xml
+.idea/runConfigurations.xml
+.idea/sqlDataSources.xml
+.idea/tasks.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+.idea/caches/
+.kotlin/
+/projectFilesBackup/
