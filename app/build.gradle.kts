@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -45,6 +46,9 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.navigation.compose)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
