@@ -10,7 +10,7 @@ import pl.waskysoft.inpost.notes.NotesRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailsViewModel @Inject constructor(
+class NotesViewModel @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
     private val notesRepository: NotesRepository
 ) : ViewModel() {

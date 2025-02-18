@@ -37,7 +37,7 @@ import pl.waskysoft.inpost.ui.theme.AppTheme
 
 @Composable
 fun NotesScreenEntry() {
-    val viewModel: DetailsViewModel = hiltViewModel()
+    val viewModel: NotesViewModel = hiltViewModel()
     val notes = viewModel.loadNotes().collectAsStateWithLifecycle(emptyList())
 
     val noteDialogOpened = rememberSaveable { mutableStateOf(false) }
