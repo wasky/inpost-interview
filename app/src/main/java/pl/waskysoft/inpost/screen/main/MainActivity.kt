@@ -32,22 +32,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.Serializable
 import pl.waskysoft.inpost.R
 import pl.waskysoft.inpost.screen.BaseActivity
 import pl.waskysoft.inpost.screen.notes.NotesScreenEntry
 import pl.waskysoft.inpost.ui.theme.AppTheme
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             NavigationComposable()
         }
@@ -76,8 +77,8 @@ private fun NavigationComposable() {
 
 @Composable
 private fun MainActivityContent(onNavigateToNotesScreen: () -> Unit) {
-    val viewModel: MainViewModel = viewModel(factory = MainViewModel.Companion.Factory)
-    val counter = viewModel.counter.collectAsStateWithLifecycle()
+    val viewModel: MainViewModel = hiltViewModel()
+    val counter = viewModel.counterValue.collectAsStateWithLifecycle()
 
     AppTheme {
         MainScreen(

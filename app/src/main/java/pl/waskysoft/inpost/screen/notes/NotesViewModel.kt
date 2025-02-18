@@ -1,18 +1,22 @@
 package pl.waskysoft.inpost.screen.notes
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import pl.waskysoft.inpost.db.AppDatabase
 import pl.waskysoft.inpost.db.entity.Note
+import pl.waskysoft.inpost.di.IoDispatcher
+import javax.inject.Inject
 
-class DetailsViewModel(app: Application) : AndroidViewModel(app) {
+@HiltViewModel
+class DetailsViewModel @Inject constructor(
+    private val db: AppDatabase,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+) : ViewModel() {
 
-    private val db get() = AppDatabase.getInstance(getApplication())
-
-    fun addNote(text: String) = viewModelScope.launch(Dispatchers.IO) {
+    fun addNote(text: String) = viewModelScope.launch(ioDispatcher) {
         val noteDao = db.noteDao()
         noteDao.insertAll(Note(text = text))
     }

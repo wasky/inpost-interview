@@ -30,14 +30,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import pl.waskysoft.inpost.db.entity.Note
 import pl.waskysoft.inpost.ui.theme.AppTheme
 
 @Composable
 fun NotesScreenEntry() {
-    val viewModel: DetailsViewModel = viewModel()
+    val viewModel: DetailsViewModel = hiltViewModel()
     val notes = viewModel.loadNotes().collectAsStateWithLifecycle(emptyList())
 
     val noteDialogOpened = rememberSaveable { mutableStateOf(false) }
