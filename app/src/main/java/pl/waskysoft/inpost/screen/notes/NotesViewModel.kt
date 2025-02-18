@@ -15,8 +15,10 @@ class NotesViewModel @Inject constructor(
     private val notesRepository: NotesRepository
 ) : ViewModel() {
 
-    fun addNote(text: String) = viewModelScope.launch(ioDispatcher) {
-        notesRepository.addNote(text)
+    fun addNote(text: String) {
+        viewModelScope.launch(ioDispatcher) {
+            notesRepository.addNote(text)
+        }
     }
 
     fun loadNotes() = notesRepository.loadNotes()
