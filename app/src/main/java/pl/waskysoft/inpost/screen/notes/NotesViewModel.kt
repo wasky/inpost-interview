@@ -5,22 +5,20 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import pl.waskysoft.inpost.db.AppDatabase
-import pl.waskysoft.inpost.db.entity.Note
 import pl.waskysoft.inpost.di.IoDispatcher
+import pl.waskysoft.inpost.notes.NotesRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val db: AppDatabase,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    private val notesRepository: NotesRepository
 ) : ViewModel() {
 
     fun addNote(text: String) = viewModelScope.launch(ioDispatcher) {
-        val noteDao = db.noteDao()
-        noteDao.insertAll(Note(text = text))
+        notesRepository.addNote(text)
     }
 
-    fun loadNotes() = db.noteDao().loadAll()
+    fun loadNotes() = notesRepository.loadNotes()
 
 }
