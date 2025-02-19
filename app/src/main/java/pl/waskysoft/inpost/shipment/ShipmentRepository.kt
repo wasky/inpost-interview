@@ -13,6 +13,7 @@ class ShipmentRepository @Inject constructor(private val remoteDataSource: Shipm
     private val _apiStatus = MutableStateFlow(ApiStatus.IDLE)
     val apiStatus = _apiStatus.asStateFlow()
 
+    // In production code this should be retrieved from a database
     private val _shipments = MutableStateFlow(emptyList<Shipment>())
     val shipments = _shipments.asStateFlow()
 
@@ -22,6 +23,8 @@ class ShipmentRepository @Inject constructor(private val remoteDataSource: Shipm
             val result = remoteDataSource.getShipments()
             if (result.success) {
                 _apiStatus.value = ApiStatus.IDLE
+
+                // In production code this should be stored in a database
                 _shipments.value = result.shipments
                 return
             }
