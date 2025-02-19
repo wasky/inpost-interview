@@ -78,15 +78,16 @@ private fun NavigationComposable() {
 @Composable
 private fun MainActivityContent(onNavigateToNotesScreen: () -> Unit) {
     val viewModel: MainViewModel = hiltViewModel()
-    val counter = viewModel.counterValue.collectAsStateWithLifecycle()
+    //val counter = viewModel.counterValue.collectAsStateWithLifecycle()
+    val shipments = viewModel.shipments
 
-    AppTheme {
+    /*AppTheme {
         MainScreen(
             counter = counter,
             onIncrementCounterClick = { viewModel.incrementCounter() },
             onNavigateToNotesScreen = onNavigateToNotesScreen
         )
-    }
+    }*/
 }
 
 @Composable
